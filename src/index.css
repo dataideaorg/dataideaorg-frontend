@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fonts */
+@font-face {
+  font-family: "horta";
+  src: url("./assets/fonts/horta/Horta demo.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "futura";
+  src: url("./assets/fonts/futura/Futura Book font.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "dm sans";
+  src: url("./assets/fonts/DM_Sans/static/DMSans-Regular.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "fira";
+  src: url("./assets/fonts/fira/FiraCodeiScript-master/FiraCodeiScript-Regular.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "dm mono";
+  src: url("./assets/fonts/DM_Mono/DMMono-Regular.ttf") format("truetype");
+}
