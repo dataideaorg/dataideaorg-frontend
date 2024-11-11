@@ -1,3 +1,10 @@
+import Python from "../assets/images/python_programming.jpg";
+import DataAnalysis from "../assets/images/python_data_analysis.jpg";
+import MachineLearning from "../assets/images/python_machine_learning.jpg";
+import ProgrammingHard from "../assets/images/programming_hard.jpg";
+import DotEnv from "../assets/images/dot-env.jpg";
+import ReactThumb from "../assets/images/react-thumbnails.jpg";
+
 const Home: React.FC = () => {
   return (
     <>
@@ -58,8 +65,9 @@ const Home: React.FC = () => {
             <div className="bg-white rounded-xl shadow-md relative">
               <div className="p-4">
                 <div className="mb-6">
-                  <div className="text-gray-600 my-2">Online</div>
-                  <h3 className="text-xl font-bold">Python3 Programming</h3>
+                  {/* <div className="text-gray-600 my-2">Online</div> */}
+                  <img src={Python} alt="" className="rounded-xl" />
+                  {/* <h3 className="text-xl font-bold">Python3 Programming</h3> */}
                 </div>
 
                 <div className="mb-5">
@@ -68,16 +76,14 @@ const Home: React.FC = () => {
                   data science journey
                 </div>
 
-                <h3 className="text-[#008374] mb-2">
-                  Free Learning Materials*
-                </h3>
+                <h3 className="text-[#008374] mb-2">Juma Shafara</h3>
 
                 <div className="border border-gray-100 mb-5"></div>
 
                 <div className="flex flex-col lg:flex-row justify-between mb-4">
                   <div className="text-orange-700 mb-3">
-                    <i className="fa-solid fa-location-dot text-lg"></i>
-                    Juma Shafara
+                    <i className="fa-solid fa-location-dot text-lg"></i>4 Weeks
+                    15 Seats
                   </div>
                   <a
                     href="https://science.dataidea.org/Python/00_python_programming_outline.html"
@@ -92,10 +98,8 @@ const Home: React.FC = () => {
             <div className="bg-white rounded-xl shadow-md relative">
               <div className="p-4">
                 <div className="mb-6">
-                  <div className="text-gray-600 my-2">Online</div>
-                  <h3 className="text-xl font-bold">
-                    Data Analysis with Python
-                  </h3>
+                  {/* <div className="text-gray-600 my-2">Online</div> */}
+                  <img src={DataAnalysis} alt="" className="rounded-xl" />
                 </div>
 
                 <div className="mb-5">
@@ -104,16 +108,14 @@ const Home: React.FC = () => {
                   insights
                 </div>
 
-                <h3 className="text-[#008374] mb-2">
-                  Free Learning Materials*
-                </h3>
+                <h3 className="text-[#008374] mb-2">Juma Shafara</h3>
 
                 <div className="border border-gray-100 mb-5"></div>
 
                 <div className="flex flex-col lg:flex-row justify-between mb-4">
                   <div className="text-orange-700 mb-3">
-                    <i className="fa-solid fa-location-dot text-lg"></i>
-                    Juma Shafara
+                    <i className="fa-solid fa-location-dot text-lg"></i>4 Weeks
+                    10 seats
                   </div>
                   <a
                     href="https://science.dataidea.org/Python-Data-Analysis/python_data_analysis_outline.html"
@@ -128,8 +130,9 @@ const Home: React.FC = () => {
             <div className="bg-white rounded-xl shadow-md relative">
               <div className="p-4">
                 <div className="mb-6">
-                  <div className="text-gray-600 my-2">Online</div>
-                  <h3 className="text-xl font-bold">Machine Learning</h3>
+                  {/* <div className="text-gray-600 my-2">Online</div> */}
+                  <img src={MachineLearning} alt="" className="rounded-xl" />
+                  {/* <h3 className="text-xl font-bold">Machine Learning</h3> */}
                 </div>
 
                 <div className="mb-5">
@@ -137,16 +140,14 @@ const Home: React.FC = () => {
                   experience in building and optimizing models
                 </div>
 
-                <h3 className="text-[#008374] mb-2">
-                  Free Learning Materials*
-                </h3>
+                <h3 className="text-[#008374] mb-2">Juma Shafara</h3>
 
                 <div className="border border-gray-100 mb-5"></div>
 
                 <div className="flex flex-col lg:flex-row justify-between mb-4">
                   <div className="text-orange-700 mb-3">
-                    <i className="fa-solid fa-location-dot text-lg"></i>
-                    Juma Shafafa
+                    <i className="fa-solid fa-location-dot text-lg"></i>4 Weeks
+                    10 seats
                   </div>
                   <a
                     href="https://science.dataidea.org/Python-Data-Analysis/Week4-ML-Intro/41_overview_of_machine_learning.html"
@@ -181,10 +182,7 @@ const Home: React.FC = () => {
             <div className="bg-white rounded-xl shadow-md relative">
               <div className="p-4">
                 <div className="mb-6">
-                  <div className="text-gray-600 my-2">Online</div>
-                  <h3 className="text-xl font-bold">
-                    React + TypeScript - Navigation
-                  </h3>
+                  <img src={ReactThumb} alt="" className="rounded-xl" />
                 </div>
 
                 <div className="mb-5">
@@ -214,10 +212,7 @@ const Home: React.FC = () => {
             <div className="bg-white rounded-xl shadow-md relative">
               <div className="p-4">
                 <div className="mb-6">
-                  <div className="text-gray-600 my-2">Online</div>
-                  <h3 className="text-xl font-bold">
-                    Using Dotenv for Secure Environment Variable Management
-                  </h3>
+                  <img src={DotEnv} alt="" className="rounded-xl" />
                 </div>
 
                 <div className="mb-5">
@@ -247,11 +242,7 @@ const Home: React.FC = () => {
             <div className="bg-white rounded-xl shadow-md relative">
               <div className="p-4">
                 <div className="mb-6">
-                  <div className="text-gray-600 my-2">Online</div>
-                  <h3 className="text-xl font-bold">
-                    Why Learning Programming Can Be Hard and How to Make It
-                    Easier
-                  </h3>
+                  <img src={ProgrammingHard} alt="" className="rounded-xl" />
                 </div>
 
                 <div className="mb-5">
