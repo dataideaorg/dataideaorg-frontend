@@ -46,7 +46,7 @@ const Home: React.FC = () => {
                 programming components essential for web development.
               </p>
               <a
-                href="https://webdev.dataidea.org"
+                href="https://web.dataidea.org"
                 className="inline-block bg-[#008374] text-white rounded-lg px-4 py-2 hover:bg-[#019b89]"
               >
                 Get Started
