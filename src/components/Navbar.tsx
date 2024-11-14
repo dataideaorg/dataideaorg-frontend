@@ -1,54 +1,192 @@
-// src/components/Navbar.tsx
-import React from "react";
-// import Logo from '../assets/logo.png'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar: React.FC = () => {
+  const { username, logout } = useAuth();
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isUserMenuOpen, setUserMenuOpen] = useState(false);
+
   return (
     <nav className="bg-[#008374] border-b border-[#66fdee] font-default">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
-            <a className="flex flex-shrink-0 items-center mr-4" href="/">
-              {/* <img
-                  className="h-10 w-auto"
-                  src={Logo}
-                  alt="DATAIDEA"
-                /> */}
-              <span className="font-heading hidden md:block text-white text-3xl font-bold ml-2">
+          {/* Logo */}
+          <div className="flex items-center justify-between w-full md:w-auto">
+            <a href="/" className="flex flex-shrink-0 items-center">
+              <span className="font-heading text-white text-3xl font-bold ml-2">
                 DATAIDEA
               </span>
             </a>
-            <div className="md:ml-auto">
-              <div className="flex space-x-2">
-                <a
-                  href="/index.html"
-                  className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+
+            {/* Mobile menu button */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-900 hover:bg-gray-700 focus:outline-none md:hidden"
+              aria-controls="mobile-menu"
+              aria-expanded={isMobileMenuOpen}
+            >
+              <span className="sr-only">Open main menu</span>
+              {/* Icon for menu */}
+              {isMobileMenuOpen ? (
+                <svg
+                  className="h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  Home
-                </a>
-                <a
-                  href="https://science.dataidea.org"
-                  className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  Courses
-                </a>
-                <a
-                  href="https://blog.dataidea.org"
-                  className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
-                >
-                  Blog
-                </a>
-                {/* <a
-                    href="/add-job.html"
-                    className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                </svg>
+              )}
+            </button>
+          </div>
+
+          {/* Links for desktop */}
+          <div className="hidden md:flex md:ml-auto space-x-2">
+            <Link
+              to="/"
+              className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
+            >
+              Home
+            </Link>
+            <a
+              href="/#courses"
+              className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
+            >
+              Courses
+            </a>
+            <a
+              href="/#blog"
+              className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
+            >
+              Blog
+            </a>
+
+            {/* Dropdown for user links */}
+            <div className="relative">
+              <button
+                onClick={() => setUserMenuOpen(!isUserMenuOpen)}
+                className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
+              >
+                Account
+              </button>
+              {isUserMenuOpen && (username? (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                  <p className="text-gray-700 px-4 py-2">Logged in as {username}</p>
+                  <Link
+                    to="/login"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                    onClick={logout}
                   >
-                    Add Job
-                  </a> */}
-              </div>
+                    {">"} Logout
+                  </Link>
+                </div>
+              ) : (
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                  <Link
+                    to="/login"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                  >
+                    {">"} Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                  >
+                    {">"} Register
+                  </Link>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden" id="mobile-menu">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            <Link
+              to="/"
+              className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
+            >
+              Home
+            </Link>
+            <a
+              href="/#courses"
+              className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
+            >
+              Courses
+            </a>
+            <a
+              href="/#blog"
+              className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
+            >
+              Blog
+            </a>
+
+            {/* Dropdown for user links in mobile view */}
+            <div className="relative">
+              <button
+                onClick={() => setUserMenuOpen(!isUserMenuOpen)}
+                className="text-white hover:bg-gray-900 block rounded-md px-3 py-2 w-full text-left"
+              >
+                Account
+              </button>
+              {isUserMenuOpen &&
+                (username ? (
+                  <div className="px-4">
+                    <p className="text-white">Logged in as {username}</p>
+                    <Link
+                      to="/login"
+                      className="block text-white hover:bg-gray-900 rounded-md px-3 py-2"
+                      onClick={logout}
+                    >
+                      {">"} Logout
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="px-4">
+                    <Link
+                      to="/login"
+                      className="block text-white hover:bg-gray-900 rounded-md px-3 py-2"
+                    >
+                      {">"} Login
+                    </Link>
+                    <Link
+                      to="/register"
+                      className="block text-white hover:bg-gray-900 rounded-md px-3 py-2"
+                    >
+                      {">"} Register
+                    </Link>
+                  </div>
+                ))}
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
