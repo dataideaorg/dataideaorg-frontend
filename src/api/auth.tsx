@@ -17,7 +17,7 @@ interface AuthResponse {
 
 // Register User
 export const register = async (data: RegisterData): Promise<void> => {
-  const response = await fetch("http://localhost:8000/accounts/register/", {
+  const response = await fetch("https://dataidea.pythonanywhere.com/accounts/register/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export const register = async (data: RegisterData): Promise<void> => {
 
 // Login User
 export const login = async (data: LoginData): Promise<AuthResponse> => {
-  const response = await fetch("http://localhost:8000/accounts/login/", {
+  const response = await fetch("https://dataidea.pythonanywhere.com/accounts/login/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
