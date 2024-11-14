@@ -1,5 +1,6 @@
 // src/components/Navbar.tsx
 import React from "react";
+import { Link } from "react-router-dom";
 // import Logo from '../assets/logo.png'
 
 const Navbar: React.FC = () => {
@@ -20,24 +21,39 @@ const Navbar: React.FC = () => {
             </a>
             <div className="md:ml-auto">
               <div className="flex space-x-2">
-                <a
-                  href="/index.html"
-                  className="text-white bg-black hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                {/* add login link */}
+                <Link
+                  to="/"
+                  className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
                 >
                   Home
-                </a>
+                </Link>
                 <a
-                  href="https://science.dataidea.org"
+                  href="/#courses"
                   className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
                 >
                   Courses
                 </a>
                 <a
-                  href="https://blog.dataidea.org"
+                  href="/#blog"
                   className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
                 >
                   Blog
                 </a>
+                {/* add login link */}
+                <Link
+                  to="/login"
+                  className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                >
+                  Login
+                </Link>
+                {/* add register link */}
+                <Link
+                  to="/register"
+                  className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                >
+                  Register
+                </Link>
                 {/* <a
                     href="/add-job.html"
                     className="text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"

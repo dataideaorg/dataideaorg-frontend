@@ -56,7 +56,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="bg-cyan-50 px-4 py-10 font-default">
+      <section id="courses" className="bg-cyan-50 px-4 py-10 font-default">
         <div className="container-xl lg:container m-auto">
           <h2 className="text-3xl font-bold text-[#008374] mb-6 text-center">
             Browse Courses
@@ -162,7 +162,7 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="m-auto max-w-lg my-10 px-6">
+      <section id="blog" className="m-auto max-w-lg my-10 px-6">
         <a
           href="https://science.dataidea.org"
           className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
