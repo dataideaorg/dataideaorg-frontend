@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { login } from "../api/auth";
 
 const Login: React.FC = () => {
-  const [username, setUsername] = useState<string>("");
+  const [username, setLocalUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
 
@@ -13,7 +13,9 @@ const Login: React.FC = () => {
       // Save the tokens (you can use localStorage, cookies, or Context API)
       localStorage.setItem("access_token", data.access);
       localStorage.setItem("refresh_token", data.refresh);
-      alert("Login successful!");
+      localStorage.setItem("username", data.username);
+      console.log(data);
+      alert(`Welcome ${data.username}!`);
       //   redirect home
       window.location.href = "/";
     } catch (err: any) {
@@ -31,7 +33,7 @@ const Login: React.FC = () => {
           type="text"
           placeholder="Username"
           value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setLocalUsername(e.target.value)}
           required
           className="border border-gray-300 rounded-md p-3"
         />
@@ -50,7 +52,13 @@ const Login: React.FC = () => {
           Login
         </button>
       </form>
-      {error && <p>{error}</p>}
+      {error && <p className="text-red-500 underline p-3">{error}</p>}
+      <p className="text-center mt-3">
+        Don't have an account?{" "}
+        <a href="/register" className="text-[#008374] underline">
+          Register
+        </a>
+      </p>
     </div>
   );
 };
