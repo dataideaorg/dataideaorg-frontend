@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { register } from "../api/auth";
+import { Link } from "react-router-dom";
 
 const Register: React.FC = () => {
   const [username, setUsername] = useState<string>("");
@@ -58,9 +59,9 @@ const Register: React.FC = () => {
       {error && <p className="text-red-500 underline p-3">{error}</p>}
       <p className="text-center mt-3">
         Already have an account?{" "}
-        <a href="/login" className="text-[#008374] underline">
+        <Link to="/login" className="text-[#008374] underline">
           Login
-        </a>
+        </Link>
       </p>
     </div>
   );
