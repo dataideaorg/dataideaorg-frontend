@@ -1,23 +1,36 @@
+import React from "react";
 import {
   Calendar as BigCalendar,
   CalendarProps,
   momentLocalizer,
 } from "react-big-calendar";
 import moment from "moment";
-import React from "react";
 
+// Localizer for react-big-calendar
 const localizer = momentLocalizer(moment);
 
-const Calendar: React.FC = (props: Omit<CalendarProps, "localizer">) => {
+// Event type definition
+interface CalendarEvent {
+  title: string;
+  start: Date;
+  end: Date;
+}
+
+// Props for Calendar component
+interface CustomCalendarProps extends Omit<CalendarProps, "localizer"> {
+  events: CalendarEvent[];
+}
+
+const Calendar: React.FC<CustomCalendarProps> = ({ events, ...restProps }) => {
   return (
     <div className="p-3">
       <BigCalendar
-        events={props.events}
+        events={events}
         localizer={localizer}
         style={{ height: "85vh", width: "100%" }}
-        // defaultView="week"
         startAccessor="start"
         endAccessor="end"
+        {...restProps} // Spread other props if needed
       />
     </div>
   );
