@@ -23,7 +23,7 @@ interface CustomCalendarProps extends Omit<CalendarProps, "localizer"> {
 
 const Calendar: React.FC<CustomCalendarProps> = ({ events, ...restProps }) => {
   return (
-    <div className="p-3">
+    <div className="p-3 font-default">
       <BigCalendar
         events={events}
         localizer={localizer}
