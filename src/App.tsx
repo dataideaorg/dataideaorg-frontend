@@ -9,6 +9,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import HundredDaysOfCode from "./pages/100DaysOfCodeCalendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import ChallengeIntro from "./pages/100DaysOfCodeHome";
+import NotFound from "./pages/404";
 
 const App: React.FC = () => {
   return (
@@ -27,7 +28,7 @@ const App: React.FC = () => {
           path="/100-days-of-code-calendar"
           element={<HundredDaysOfCode />}
         />
-        <Route path="*" element={<h1>404 Not Found</h1>} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </div>
   );
