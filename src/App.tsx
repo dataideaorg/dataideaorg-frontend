@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import TermsOfService from "./pages/TermsOfService";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import HundredDaysOfCode from "./pages/100DaysOfCodeCalendar";
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import ChallengeIntro from "./pages/100DaysOfCodeHome";
 
 const App: React.FC = () => {
@@ -23,7 +23,10 @@ const App: React.FC = () => {
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/100-days-of-code" element={<ChallengeIntro />} />
-        <Route path="/100-days-of-code-calendar" element={<HundredDaysOfCode />} />
+        <Route
+          path="/100-days-of-code-calendar"
+          element={<HundredDaysOfCode />}
+        />
         <Route path="*" element={<h1>404 Not Found</h1>} />
       </Routes>
     </div>

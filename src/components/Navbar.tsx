@@ -83,12 +83,12 @@ const Navbar: React.FC = () => {
             >
               Blog
             </a>
-            <a
-              href="/100-days-of-code"
+            <Link
+              to="/100-days-of-code"
               className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
             >
               100DaysOfCode
-            </a>
+            </Link>
 
             {/* Dropdown for user links */}
             <div className="relative">
@@ -155,12 +155,12 @@ const Navbar: React.FC = () => {
             >
               Blog
             </a>
-            <a
-              href="/100-days-of-code"
+            <Link
+              to="/100-days-of-code"
               className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
             >
               100DaysOfCode
-            </a>
+            </Link>
 
             {/* Dropdown for user links in mobile view */}
             <div className="relative">
