@@ -3,6 +3,8 @@ import { register } from "../api/auth";
 import { Link } from "react-router-dom";
 
 const Register: React.FC = () => {
+  const [first_name, SetFirstName] = useState<string>("");
+  const [last_name, SetLastName] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -25,6 +27,22 @@ const Register: React.FC = () => {
         Welcome, Register
       </h2>
       <form onSubmit={handleSubmit} className="flex flex-col space-y-3">
+        <input 
+        type="text"
+        placeholder="First Name"
+        value={first_name}
+        onChange={(e) => SetFirstName(e.target.value)}
+        required
+        className="border border-gray-300 rounded-md p-3"
+        />
+        <input 
+        type="text"
+        placeholder="Last Name"
+        value={last_name}
+        onChange={(e) => SetLastName(e.target.value)}
+        required
+        className="border border-gray-300 rounded-md p-3"
+        />
         <input
           type="text"
           placeholder="Username"

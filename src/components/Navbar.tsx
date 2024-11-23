@@ -83,6 +83,12 @@ const Navbar: React.FC = () => {
             >
               Blog
             </a>
+            <a
+              href="/100-days-of-code"
+              className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
+            >
+              100DaysOfCode
+            </a>
 
             {/* Dropdown for user links */}
             <div className="relative">
@@ -92,33 +98,36 @@ const Navbar: React.FC = () => {
               >
                 Account
               </button>
-              {isUserMenuOpen && (username? (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-                  <p className="text-gray-700 px-4 py-2">Logged in as {username}</p>
-                  <Link
-                    to="/login"
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-                    onClick={logout}
-                  >
-                    {">"} Logout
-                  </Link>
-                </div>
-              ) : (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-                  <Link
-                    to="/login"
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-                  >
-                    {">"} Login
-                  </Link>
-                  <Link
-                    to="/register"
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-                  >
-                    {">"} Register
-                  </Link>
-                </div>
-              ))}
+              {isUserMenuOpen &&
+                (username ? (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                    <p className="text-gray-700 px-4 py-2">
+                      Logged in as {username}
+                    </p>
+                    <Link
+                      to="/login"
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                      onClick={logout}
+                    >
+                      {">"} Logout
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                    <Link
+                      to="/login"
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                    >
+                      {">"} Login
+                    </Link>
+                    <Link
+                      to="/register"
+                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+                    >
+                      {">"} Register
+                    </Link>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
@@ -145,6 +154,12 @@ const Navbar: React.FC = () => {
               className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
             >
               Blog
+            </a>
+            <a
+              href="/100-days-of-code"
+              className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
+            >
+              100DaysOfCode
             </a>
 
             {/* Dropdown for user links in mobile view */}
