@@ -71,7 +71,7 @@ const ChallengeIntro: React.FC = () => {
             learning.
           </p>
           <button className="px-6 py-3 bg-[#008374] text-white text-lg font-medium rounded shadow-md hover:bg-[#005f57] transition duration-300">
-            <Link to="/start-challenge">Start Your Journey</Link>
+            <Link to="/100-days-of-code-calendar">Start Your Journey</Link>
           </button>
         </div>
       </section>
