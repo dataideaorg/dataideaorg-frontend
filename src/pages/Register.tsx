@@ -18,11 +18,11 @@ const Register: React.FC = () => {
     setLoading(true);
     try {
       await register({ username, email, password });
-      toast.success("Login successful");
+      toast.success("Registration successful");
       // wait for toaster
       setTimeout(() => {
         window.location.href = "/login";
-      }, 2000);
+      }, 1000);
     } catch (err: any) {
       setLoading(false)
       toast.error(err.message);
