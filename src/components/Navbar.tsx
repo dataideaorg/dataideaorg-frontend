@@ -1,11 +1,36 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Navbar: React.FC = () => {
   const { username, logout } = useAuth();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+
+  // Close menu on navigation change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setUserMenuOpen(false);
+  }, [location]);
+
+  // Close menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node)
+      ) {
+        setMobileMenuOpen(false);
+        setUserMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className="bg-[#008374] border-b border-[#66fdee] font-default">
@@ -28,7 +53,6 @@ const Navbar: React.FC = () => {
               aria-expanded={isMobileMenuOpen}
             >
               <span className="sr-only">Open main menu</span>
-              {/* Icon for menu */}
               {isMobileMenuOpen ? (
                 <svg
                   className="h-6 w-6"
@@ -140,24 +164,28 @@ const Navbar: React.FC = () => {
             <Link
               to="/"
               className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
+              onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
             >
               Home
             </Link>
             <a
               href="/#courses"
               className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
+              onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
             >
               Courses
             </a>
             <a
               href="/#blog"
               className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
+              onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
             >
               Blog
             </a>
             <Link
               to="/100-days-of-code"
               className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
+              onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
             >
               100DaysOfCode
             </Link>
@@ -177,7 +205,10 @@ const Navbar: React.FC = () => {
                     <Link
                       to="/login"
                       className="block text-white hover:bg-gray-900 rounded-md px-3 py-2"
-                      onClick={logout}
+                      onClick={() => {
+                        logout();
+                        setMobileMenuOpen(false); // Close the menu after logout
+                      }}
                     >
                       {">"} Logout
                     </Link>
@@ -187,12 +218,14 @@ const Navbar: React.FC = () => {
                     <Link
                       to="/login"
                       className="block text-white hover:bg-gray-900 rounded-md px-3 py-2"
+                      onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
                     >
                       {">"} Login
                     </Link>
                     <Link
                       to="/register"
                       className="block text-white hover:bg-gray-900 rounded-md px-3 py-2"
+                      onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
                     >
                       {">"} Register
                     </Link>
