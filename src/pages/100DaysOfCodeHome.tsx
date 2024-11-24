@@ -51,12 +51,12 @@ const ChallengeIntro: React.FC = () => {
       </section>
 
       <section id="blog" className="m-auto max-w-lg my-10 px-6">
-        <a
-          href="/100-days-of-code-calendar"
+        <Link
+          to="/100-days-of-code-calendar"
           className="block bg-black text-white text-center py-4 px-6 rounded-xl hover:bg-gray-700"
         >
           See Calendar
-        </a>
+        </Link>
       </section>
 
       <section className="bg-cyan-50 px-6 py-12 font-sans rounded-lg">
