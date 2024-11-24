@@ -17,7 +17,7 @@ const Register: React.FC = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await register({ username, email, password });
+      await register({ first_name, last_name, username, email, password });
       toast.success("Registration successful");
       // wait for toaster
       setTimeout(() => {
@@ -60,6 +60,16 @@ const Register: React.FC = () => {
           required
           className="border border-gray-300 rounded-md p-3"
         />
+        {/* add gender */}
+        <select
+          className="border border-gray-300 rounded-md p-3"
+          required
+        >
+          <option value="">Select Gender</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+          <option value="N">Prefer not to say</option>
+        </select>
         <input
           type="email"
           placeholder="Email"
