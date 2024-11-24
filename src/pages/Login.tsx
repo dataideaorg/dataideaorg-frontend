@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { login } from "../api/auth";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { BeatLoader } from "../components/Spinners";
 
 const Login: React.FC = () => {
   const [username, setLocalUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
+    setLoading(true);
     e.preventDefault();
     try {
       const data = await login({ username, password });
@@ -15,8 +19,8 @@ const Login: React.FC = () => {
       localStorage.setItem("access_token", data.access);
       localStorage.setItem("refresh_token", data.refresh);
       localStorage.setItem("username", data.username);
-      console.log(data);
-      alert(`Welcome ${data.username}!`);
+      // setLoading(false)
+      toast.success("Login successful");
       //   redirect home
       window.location.href = "/";
     } catch (err: any) {
@@ -50,7 +54,7 @@ const Login: React.FC = () => {
           type="submit"
           className="bg-[#008374] text-white p-3 rounded-lg"
         >
-          Login
+          {loading ? <BeatLoader loading={loading} /> : "Login"}
         </button>
       </form>
       {error && <p className="text-red-500 underline p-3">{error}</p>}

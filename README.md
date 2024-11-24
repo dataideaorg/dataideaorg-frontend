@@ -1,6 +1,5 @@
 # TODO
 
 - Improve navbar and homepage
-- Add 404 page
-- Loading indicator**
-- Add state management
+- Update to use loaders for data loading
+- Loading indicator\*\*
