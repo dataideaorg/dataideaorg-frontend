@@ -3,7 +3,6 @@ import { register } from "../api/auth";
 import { Link } from "react-router-dom";
 import { BeatLoader } from "../components/Spinners";
 import { toast } from "react-toastify";
-import { set } from "date-fns";
 
 const Register: React.FC = () => {
   const [first_name, SetFirstName] = useState<string>("");
