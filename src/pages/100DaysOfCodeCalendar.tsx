@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { act, useEffect, useState } from "react";
 import { getActivities } from "../api/activities";
 import moment from "moment";
 import CustomCalendar from "../components/Calendar";
@@ -14,7 +14,10 @@ const HundredDaysOfCode: React.FC = () => {
         title: activity.name,
         start: moment(activity.start_date).toDate(),
         end: moment(activity.end_date).toDate(),
+        resource: { link: activity.url_link },
       }));
+      console.log(newEvents);
+      console.log(activities);
       setEvents(newEvents); // Update state once with the new events array
     } catch (error) {
       console.error("Error fetching activities:", error);
