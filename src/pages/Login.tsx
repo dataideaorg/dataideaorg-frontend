@@ -20,9 +20,12 @@ const Login: React.FC = () => {
       localStorage.setItem("refresh_token", data.refresh);
       localStorage.setItem("username", data.username);
       // setLoading(false)
-      toast.success("Login successful");
       //   redirect home
-      window.location.href = "/";
+      toast.success("Login successful", );
+      // Move the redirect after a short delay
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1000); // Wait 1 second for the toast to show
     } catch (err: any) {
       setError(err.message);
     }

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { register } from "../api/auth";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import { BeatLoader } from "../components/Spinners";
+import { toast } from "react-toastify";
+import { set } from "date-fns";
 
 const Register: React.FC = () => {
   const [first_name, SetFirstName] = useState<string>("");
@@ -18,10 +19,14 @@ const Register: React.FC = () => {
     setLoading(true);
     try {
       await register({ username, email, password });
-      alert("User registered successfully!");
-      window.location.href = "/login";
       toast.success("Login successful");
+      // wait for toaster
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 2000);
     } catch (err: any) {
+      setLoading(false)
+      toast.error(err.message);
       setError(err.message);
     }
   };

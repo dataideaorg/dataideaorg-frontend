@@ -5,6 +5,7 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
+import { toast } from "react-toastify";
 
 // Define context types
 interface AuthContextType {
@@ -35,6 +36,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     setUsername(null);
     localStorage.removeItem("access_token");
     localStorage.removeItem("refresh_token");
+    toast.done("Logged out successfully");
   };
 
   return (
