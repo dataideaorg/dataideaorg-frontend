@@ -21,12 +21,14 @@ const Login: React.FC = () => {
       localStorage.setItem("username", data.username);
       // setLoading(false)
       //   redirect home
-      toast.success("Login successful", );
+      toast.success("Login successful");
       // Move the redirect after a short delay
       setTimeout(() => {
         window.location.href = "/";
       }, 1000); // Wait 1 second for the toast to show
     } catch (err: any) {
+      setLoading(false);
+      toast.error(err.message);
       setError(err.message);
     }
   };
