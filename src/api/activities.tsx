@@ -12,14 +12,17 @@ export const createActivity = async (
   data: ActivityData,
   token: string
 ): Promise<void> => {
-  const response = await fetch("http://localhost:8000/school/activities", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(data),
-  });
+  const response = await fetch(
+    "https://dataidea.pythonanywhere.com/school/activities",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    }
+  );
 
   if (!response.ok) {
     const errorData = await response.json();
@@ -29,13 +32,15 @@ export const createActivity = async (
 
 // get activities
 export const getActivities = async (): Promise<any> => {
-  const response = await fetch("http://localhost:8000/school/activities");
+  const response = await fetch(
+    "https://dataidea.pythonanywhere.com/school/activities"
+  );
 
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.detail || "Failed to get activities");
   }
 
-  const responseData: ActivityData = await response.json()
+  const responseData: ActivityData = await response.json();
   return responseData;
 };
