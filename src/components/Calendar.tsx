@@ -32,7 +32,6 @@ const Calendar: React.FC<CustomCalendarProps> = ({ events, ...restProps }) => {
         endAccessor="end"
         onSelectEvent={(event) => {
           // Navigate to the link stored in the resource
-          alert(event.resource.link);
           window.location.href = event.resource.link;
         }}
         {...restProps} // Spread other props if needed
