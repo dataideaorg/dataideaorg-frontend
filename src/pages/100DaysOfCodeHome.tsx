@@ -24,9 +24,9 @@ const ChallengeIntro: React.FC = () => {
             What Will You Learn?
           </h2>
           <p className="text-gray-700 text-lg leading-relaxed mb-6 text-center">
-            Over the next 100 days, we will dive into the exciting world of data
-            science through hands-on programming exercises, projects, and
-            real-world applications.
+            Over the next 100 days, we will dive into the exciting world of
+            programming and data science through hands-on programming exercises,
+            projects, and real-world applications.
           </p>
           <ul className="space-y-4">
             <li className="p-4 bg-white border-l-4 border-[#008374] rounded shadow">
@@ -47,6 +47,25 @@ const ChallengeIntro: React.FC = () => {
               applications.
             </li>
           </ul>
+          <h2 className="text-3xl font-bold text-[#008374] mb-8 text-center pt-8">
+            How it works
+          </h2>
+          <p className="text-gray-700 text-lg leading-relaxed mb-6 text-center">
+            <ul className="text-left">
+              <li>
+                {'>'} Use this <Link to="/100-days-of-code-calendar" className="text-blue-500 underline">Calendar</Link>{" "}
+                see the topic of the day.
+              </li>
+              <li>
+              {'>'} Clicking on the event will take you to a page with the notes and
+                exercise for the day.
+              </li>
+              <li>
+              {'>'} Complete the exercise and share your solution on any DATAIDEA
+                platform eg on WhatsApp, Twitter etc.
+              </li>
+            </ul>
+          </p>
         </div>
       </section>
 
