@@ -4,6 +4,7 @@ import MachineLearning from "../assets/images/python_machine_learning.jpg";
 import ProgrammingHard from "../assets/images/programming_hard.jpg";
 import DotEnv from "../assets/images/dot-env.jpg";
 import ReactThumb from "../assets/images/react-thumbnails.jpg";
+import { FaChartLine, FaGlobe, FaExternalLinkAlt } from 'react-icons/fa'
 
 const Home: React.FC = () => {
   return (
@@ -14,7 +15,7 @@ const Home: React.FC = () => {
             <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
               Programming for Data Science
             </h1>
-            <p className="my-4 text-xl text-white">
+            <p className="my-4 text-xl text-white md:w-3/4 md:m-auto p-6">
               We teach people to Programming for Data Science and Web
               Development. We also Develop Software solutions for individuals
               and organizations
@@ -27,8 +28,13 @@ const Home: React.FC = () => {
         <div className="container-xl lg:container m-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-              <h2 className="text-2xl font-bold">Data Science</h2>
-              <p className="mt-2 mb-4">
+            <div className="flex flex-row space-x-3">
+            <FaChartLine size={25}/>
+              <h2 className="text-2xl font-bold">
+                Data Science
+                </h2>
+            </div>
+              <p className="mt-2 mb-4 ">
                 A comprehensive and dynamic course designed to equip you with
                 the skills to thrive in data science.
               </p>
@@ -37,10 +43,14 @@ const Home: React.FC = () => {
                 className="inline-block bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700"
               >
                 Get Started
+                <span className="inline-block pl-3"><FaExternalLinkAlt/></span> 
               </a>
             </div>
             <div className="bg-cyan-50 p-6 rounded-lg shadow-md">
+              <div className="flex flex-row space-x-3">
+              <FaGlobe size={25}/>
               <h2 className="text-2xl font-bold">Web Development</h2>
+              </div>
               <p className="mt-2 mb-4">
                 A comprehensive subject designed to cover the various
                 programming components essential for web development.
@@ -50,6 +60,7 @@ const Home: React.FC = () => {
                 className="inline-block bg-[#008374] text-white rounded-lg px-4 py-2 hover:bg-[#019b89]"
               >
                 Get Started
+                <span className="inline-block pl-3"><FaExternalLinkAlt/></span> 
               </a>
             </div>
           </div>
@@ -90,6 +101,7 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Get Started
+                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
                   </a>
                 </div>
               </div>
@@ -122,6 +134,7 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Get Started
+                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
                   </a>
                 </div>
               </div>
@@ -154,6 +167,7 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Get Started
+                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
                   </a>
                 </div>
               </div>
@@ -205,6 +219,7 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Read More
+                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
                   </a>
                 </div>
               </div>
@@ -234,6 +249,7 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Read More
+                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
                   </a>
                 </div>
               </div>
@@ -264,6 +280,7 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Read More
+                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
                   </a>
                 </div>
               </div>
