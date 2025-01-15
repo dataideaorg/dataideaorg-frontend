@@ -4,14 +4,15 @@ import MachineLearning from "../assets/images/python_machine_learning.jpg";
 import ProgrammingHard from "../assets/images/programming_hard.jpg";
 import DotEnv from "../assets/images/dot-env.jpg";
 import ReactThumb from "../assets/images/react-thumbnails.jpg";
-import { FaChartLine, FaGlobe, FaExternalLinkAlt } from 'react-icons/fa'
+import { FaCode, FaChartLine, FaGlobe, FaExternalLinkAlt } from 'react-icons/fa'
 
 const Home: React.FC = () => {
   return (
     <>
-      <section className="font-default bg-[#008374] py-20 mb-4">
+      <section className="font-default bg-[#008374] py-16 mb-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
           <div className="text-center">
+            <div className="flex justify-center"><FaCode color="white" size={45}/></div>
             <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
               Programming for Data Science
             </h1>
