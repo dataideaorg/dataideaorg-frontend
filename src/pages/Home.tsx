@@ -15,7 +15,7 @@ const Home: React.FC = () => {
             <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
               Programming for Data Science
             </h1>
-            <p className="my-4 text-xl text-white md:w-3/4 md:m-auto p-6">
+            <p className="my-4 text-xl text-white md:w-3/4 md:m-auto md:p-6">
               We teach people to Programming for Data Science and Web
               Development. We also Develop Software solutions for individuals
               and organizations
