@@ -9,6 +9,10 @@ import {
   FaChartLine,
   FaGlobe,
   FaExternalLinkAlt,
+  FaTwitter,
+  FaFacebook,
+  FaLinkedin,
+  FaYoutube,
 } from "react-icons/fa";
 
 
@@ -342,6 +346,29 @@ const Home: React.FC = () => {
           View All Blogs
         </a>
       </section>
+
+      <section className="bg-[#008374] text-white py-6">
+        <div className="container-xl lg:container m-auto text-center">
+          <p className="text-sm">
+            © 2024 DataIdea. All rights reserved.
+          </p>
+          <div className="flex justify-center space-x-4 mt-4">
+            <a href="https://twitter.com/dataideaorg" className="hover:text-gray-300 flex items-center space-x-2">
+              <FaTwitter />
+              <span>Twitter</span>
+            </a>
+            <a href="https://youtube.com/@dataideascience" className="hover:text-gray-300 flex items-center space-x-2">
+              <FaYoutube />
+              <span>YouTube</span>
+            </a>
+            <a href="https://linkedin.com/company/dataideaorg" className="hover:text-gray-300 flex items-center space-x-2">
+              <FaLinkedin />
+              <span>LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
     </>
   );
 };
