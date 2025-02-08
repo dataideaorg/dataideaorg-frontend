@@ -4,23 +4,54 @@ import MachineLearning from "../assets/images/python_machine_learning.jpg";
 import ProgrammingHard from "../assets/images/programming_hard.jpg";
 import DotEnv from "../assets/images/dot-env.jpg";
 import ReactThumb from "../assets/images/react-thumbnails.jpg";
-import { FaCode, FaChartLine, FaGlobe, FaExternalLinkAlt } from 'react-icons/fa'
+import HeroImage from "../assets/images/hero-image.png";
+import {
+  FaCode,
+  FaChartLine,
+  FaGlobe,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
+
 
 const Home: React.FC = () => {
   return (
     <>
-      <section className="font-default bg-[#008374] py-16 mb-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-          <div className="text-center">
-            <div className="flex justify-center"><FaCode color="white" size={45}/></div>
-            <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
-              Programming for Data Science
-            </h1>
-            <p className="my-4 text-xl text-white md:w-3/4 md:m-auto md:p-6">
-              We teach people to Programming for Data Science and Web
-              Development. We also Develop Software solutions for individuals
-              and organizations
-            </p>
+      {/* <HeroSplit /> */}
+      <section className="font-default bg-gradient-to-br from-[#008374] to-[#006d61] min-h-[85vh] flex items-center relative overflow-hidden" id="hero">
+        {/* Abstract background shapes */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full mix-blend-overlay filter blur-xl animate-pulse delay-700"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="text-4xl font-extrabold text-white sm:text-5xl md:text-6xl">
+                <span className="block">Programming for</span>
+                <span className="block">Data Science</span>
+              </h1>
+              <p className="my-6 text-xl text-white/90 leading-relaxed">
+                We teach people to Programming for Data Science and Web
+                Development. We also Develop Software solutions for individuals
+                and organizations
+              </p>
+              <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
+                <a href="#courses" className="px-8 py-3 bg-white text-[#008374] rounded-md font-semibold hover:bg-cyan-50 transition-all duration-300 shadow-lg hover:shadow-xl">
+                  Get Started
+                </a>
+                <a href="#blog" className="px-8 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white/10 transition-all duration-300">
+                  Learn More
+                </a>
+              </div>
+            </div>
+            <div className="hidden lg:flex justify-center">
+              <img 
+                src={HeroImage} 
+                alt="Programming and Data Science"
+                className="w-[85%] h-auto animate-updown drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -29,12 +60,10 @@ const Home: React.FC = () => {
         <div className="container-xl lg:container m-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-lg">
             <div className="bg-gray-100 p-6 rounded-lg shadow-md">
-            <div className="flex flex-row space-x-3">
-            <FaChartLine size={25}/>
-              <h2 className="text-2xl font-bold">
-                Data Science
-                </h2>
-            </div>
+              <div className="flex flex-row space-x-3">
+                <FaChartLine size={25} />
+                <h2 className="text-2xl font-bold">Data Science</h2>
+              </div>
               <p className="mt-2 mb-4 ">
                 A comprehensive and dynamic course designed to equip you with
                 the skills to thrive in data science.
@@ -44,13 +73,15 @@ const Home: React.FC = () => {
                 className="inline-block bg-black text-white rounded-lg px-4 py-2 hover:bg-gray-700"
               >
                 Get Started
-                <span className="inline-block pl-3"><FaExternalLinkAlt/></span> 
+                <span className="inline-block pl-3">
+                  <FaExternalLinkAlt />
+                </span>
               </a>
             </div>
             <div className="bg-cyan-50 p-6 rounded-lg shadow-md">
               <div className="flex flex-row space-x-3">
-              <FaGlobe size={25}/>
-              <h2 className="text-2xl font-bold">Web Development</h2>
+                <FaGlobe size={25} />
+                <h2 className="text-2xl font-bold">Web Development</h2>
               </div>
               <p className="mt-2 mb-4">
                 A comprehensive subject designed to cover the various
@@ -61,7 +92,9 @@ const Home: React.FC = () => {
                 className="inline-block bg-[#008374] text-white rounded-lg px-4 py-2 hover:bg-[#019b89]"
               >
                 Get Started
-                <span className="inline-block pl-3"><FaExternalLinkAlt/></span> 
+                <span className="inline-block pl-3">
+                  <FaExternalLinkAlt />
+                </span>
               </a>
             </div>
           </div>
@@ -102,7 +135,9 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Get Started
-                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
+                    <span className="inline-block pl-3">
+                      <FaExternalLinkAlt />
+                    </span>
                   </a>
                 </div>
               </div>
@@ -135,7 +170,9 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Get Started
-                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
+                    <span className="inline-block pl-3">
+                      <FaExternalLinkAlt />
+                    </span>
                   </a>
                 </div>
               </div>
@@ -168,7 +205,9 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Get Started
-                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
+                    <span className="inline-block pl-3">
+                      <FaExternalLinkAlt />
+                    </span>
                   </a>
                 </div>
               </div>
@@ -201,7 +240,7 @@ const Home: React.FC = () => {
                 </div>
 
                 <div className="mb-5">
-                  In this guide, we’ll create a new React project with Vite,
+                  In this guide, we'll create a new React project with Vite,
                   TypeScript, Tailwind CSS, and add a basic navigation bar using
                   React components.
                 </div>
@@ -220,7 +259,9 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Read More
-                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
+                    <span className="inline-block pl-3">
+                      <FaExternalLinkAlt />
+                    </span>
                   </a>
                 </div>
               </div>
@@ -250,7 +291,9 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Read More
-                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
+                    <span className="inline-block pl-3">
+                      <FaExternalLinkAlt />
+                    </span>
                   </a>
                 </div>
               </div>
@@ -264,7 +307,7 @@ const Home: React.FC = () => {
 
                 <div className="mb-5">
                   Why is programming so difficult to learn, and how can you make
-                  the process smoother? Let’s dive in.
+                  the process smoother? Let's dive in.
                 </div>
 
                 <h3 className="text-[#008374] mb-2">Aug 12, 2024</h3>
@@ -281,7 +324,9 @@ const Home: React.FC = () => {
                     className="h-[36px] bg-[#008374] hover:bg-[#019b89] text-white px-4 py-2 rounded-lg text-center text-sm"
                   >
                     Read More
-                    <span className="inline-block pl-3"><FaExternalLinkAlt/></span>
+                    <span className="inline-block pl-3">
+                      <FaExternalLinkAlt />
+                    </span>
                   </a>
                 </div>
               </div>
