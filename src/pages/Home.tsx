@@ -6,7 +6,6 @@ import DotEnv from "../assets/images/dot-env.jpg";
 import ReactThumb from "../assets/images/react-thumbnails.jpg";
 import HeroImage from "../assets/images/hero-image.png";
 import {
-  FaCode,
   FaChartLine,
   FaGlobe,
   FaExternalLinkAlt,

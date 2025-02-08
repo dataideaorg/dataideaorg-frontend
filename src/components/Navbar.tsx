@@ -2,235 +2,223 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
+interface NavLinkProps {
+  href: string;
+  label: string;
+  external?: boolean;
+}
+
+const NavLink: React.FC<NavLinkProps> = ({ href, label, external }) => {
+  const baseClasses = "transition-all duration-300 text-white/90 hover:text-white hover:bg-[#00a697] rounded-md px-3 py-2";
+  
+  return external ? (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${baseClasses} hover:scale-105`}
+    >
+      {label}
+    </a>
+  ) : (
+    <Link to={href} className={baseClasses}>
+      {label}
+    </Link>
+  );
+};
+
 const Navbar: React.FC = () => {
   const { username, logout } = useAuth();
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isUserMenuOpen, setUserMenuOpen] = useState(false);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  // Close menu on navigation change
+  const menuItems = {
+    resources: [
+      { label: "Data Science", href: "https://science.dataidea.org" },
+      { label: "Blog", href: "https://blog.dataidea.org" },
+      { label: "Movies", href: "https://movies.dataidea.org" },
+    ],
+    community: [
+      { label: "Forum Group", href: "https://chat.whatsapp.com/GuCZRyJICgO3Y7MPvDQKhi" },
+      { label: "YouTube", href: "https://www.youtube.com/@dataideascience" },
+      { label: "Twitter", href: "https://twitter.com/dataideaorg" },
+    ],
+  };
+
   useEffect(() => {
+    setActiveMenu(null);
     setMobileMenuOpen(false);
-    setUserMenuOpen(false);
   }, [location]);
 
-  // Close menu on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target as Node)
-      ) {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setActiveMenu(null);
         setMobileMenuOpen(false);
-        setUserMenuOpen(false);
       }
     };
+    
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const DropdownMenu: React.FC<{ items: typeof menuItems.resources }> = ({ items }) => (
+    <div className="absolute right-0 mt-2 w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-[#66fdee]/20 overflow-hidden z-10">
+      {items.map((item, index) => (
+        <a
+          key={index}
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block px-4 py-2 text-gray-700 hover:bg-[#008374]/10 transition-colors duration-200"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  );
+
   return (
-    <nav className="bg-[#008374] border-b border-[#66fdee] font-default">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <nav ref={navRef} className="bg-gradient-to-r from-[#008374] to-[#006d61] border-b border-[#66fdee]/30 font-default sticky top-0 z-50 backdrop-blur-sm">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center justify-between w-full md:w-auto">
-            <a href="/" className="flex flex-shrink-0 items-center">
-              <span className="font-heading text-white text-3xl font-bold ml-2">
-                DATAIDEA
-              </span>
-            </a>
+          {/* Logo Section */}
+          <Link to="/" className="group flex items-center space-x-2">
+            <span className="font-heading text-white text-3xl font-bold transition-all duration-300 group-hover:text-[#66fdee]">
+              DATAIDEA
+            </span>
+          </Link>
 
-            {/* Mobile menu button */}
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-900 hover:bg-gray-700 focus:outline-none md:hidden"
-              aria-controls="mobile-menu"
-              aria-expanded={isMobileMenuOpen}
-            >
-              <span className="sr-only">Open main menu</span>
-              {isMobileMenuOpen ? (
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex md:items-center md:space-x-4">
+            <NavLink href="/" label="Home" />
+            
+            {/* Desktop Dropdowns */}
+            {["resources", "community"].map((menuType) => (
+              <div key={menuType} className="relative">
+                <button
+                  onClick={() => setActiveMenu(activeMenu === menuType ? null : menuType)}
+                  className={`transition-all duration-300 text-white/90 hover:text-white hover:bg-[#00a697] rounded-md px-3 py-2 capitalize
+                    ${activeMenu === menuType ? 'bg-[#00a697]' : ''}`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
+                  {menuType}
+                </button>
+                {activeMenu === menuType && (
+                  <DropdownMenu items={menuItems[menuType as keyof typeof menuItems]} />
+                )}
+              </div>
+            ))}
 
-          {/* Links for desktop */}
-          <div className="hidden md:flex md:ml-auto space-x-2">
-            <Link
-              to="/"
-              className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
-            >
-              Home
-            </Link>
-            <a
-              href="/#courses"
-              className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
-            >
-              Courses
-            </a>
-            <a
-              href="/#blog"
-              className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
-            >
-              Blog
-            </a>
-            <Link
-              to="/100-days-of-code"
-              className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
-            >
-              100DaysOfCode
-            </Link>
-
-            {/* Dropdown for user links */}
+            {/* User Account Section */}
             <div className="relative">
               <button
-                onClick={() => setUserMenuOpen(!isUserMenuOpen)}
-                className="text-white hover:bg-gray-900 rounded-md px-3 py-2"
+                onClick={() => setActiveMenu(activeMenu === 'account' ? null : 'account')}
+                className={`transition-all duration-300 text-white/90 hover:text-white hover:bg-[#00a697] rounded-md px-3 py-2
+                  ${activeMenu === 'account' ? 'bg-[#00a697]' : ''}`}
               >
-                Account
+                {username ? username : 'Account'}
               </button>
-              {isUserMenuOpen &&
-                (username ? (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-                    <p className="text-gray-700 px-4 py-2">
-                      Logged in as {username}
-                    </p>
-                    <Link
-                      to="/login"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
+              {activeMenu === 'account' && (
+                <div className="absolute right-0 mt-2 w-48 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg border border-[#66fdee]/20 overflow-hidden">
+                  {username ? (
+                    <button
                       onClick={logout}
+                      className="w-full text-left px-4 py-2 text-gray-700 hover:bg-[#008374]/10 transition-colors duration-200"
                     >
-                      {">"} Logout
-                    </Link>
-                  </div>
-                ) : (
-                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-                    <Link
-                      to="/login"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-                    >
-                      {">"} Login
-                    </Link>
-                    <Link
-                      to="/register"
-                      className="block px-4 py-2 text-gray-700 hover:bg-gray-200"
-                    >
-                      {">"} Register
-                    </Link>
-                  </div>
-                ))}
+                      Logout
+                    </button>
+                  ) : (
+                    <>
+                      <Link
+                        to="/login"
+                        className="block px-4 py-2 text-gray-700 hover:bg-[#008374]/10 transition-colors duration-200"
+                      >
+                        Login
+                      </Link>
+                      <Link
+                        to="/register"
+                        className="block px-4 py-2 text-gray-700 hover:bg-[#008374]/10 transition-colors duration-200"
+                      >
+                        Register
+                      </Link>
+                    </>
+                  )}
+                </div>
+              )}
             </div>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 rounded-md text-white hover:bg-[#00a697] transition-colors duration-200"
+          >
+            <span className="sr-only">Toggle menu</span>
+            {isMobileMenuOpen ? (
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden" id="mobile-menu">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link
-              to="/"
-              className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
-              onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
-            >
-              Home
-            </Link>
-            <a
-              href="/#courses"
-              className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
-              onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
-            >
-              Courses
-            </a>
-            <a
-              href="/#blog"
-              className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
-              onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
-            >
-              Blog
-            </a>
-            <Link
-              to="/100-days-of-code"
-              className="text-white hover:bg-gray-900 block rounded-md px-3 py-2"
-              onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
-            >
-              100DaysOfCode
-            </Link>
-
-            {/* Dropdown for user links in mobile view */}
-            <div className="relative">
-              <button
-                onClick={() => setUserMenuOpen(!isUserMenuOpen)}
-                className="text-white hover:bg-gray-900 block rounded-md px-3 py-2 w-full text-left"
-              >
-                Account
-              </button>
-              {isUserMenuOpen &&
-                (username ? (
-                  <div className="px-4">
-                    <p className="text-white">Logged in as {username}</p>
-                    <Link
-                      to="/login"
-                      className="block text-white hover:bg-gray-900 rounded-md px-3 py-2"
-                      onClick={() => {
-                        logout();
-                        setMobileMenuOpen(false); // Close the menu after logout
-                      }}
-                    >
-                      {">"} Logout
-                    </Link>
-                  </div>
-                ) : (
-                  <div className="px-4">
-                    <Link
-                      to="/login"
-                      className="block text-white hover:bg-gray-900 rounded-md px-3 py-2"
-                      onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
-                    >
-                      {">"} Login
-                    </Link>
-                    <Link
-                      to="/register"
-                      className="block text-white hover:bg-gray-900 rounded-md px-3 py-2"
-                      onClick={() => setMobileMenuOpen(false)} // Close the menu when clicked
-                    >
-                      {">"} Register
-                    </Link>
-                  </div>
+        <div className="md:hidden bg-[#007367]/95 backdrop-blur-sm">
+          <div className="px-4 pt-2 pb-3 space-y-1">
+            <NavLink href="/" label="Home" />
+            
+            {Object.entries(menuItems).map(([category, items]) => (
+              <div key={category} className="py-2">
+                <div className="text-white font-semibold mb-2 capitalize">{category}</div>
+                {items.map((item, index) => (
+                  <a
+                    key={index}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-white/80 hover:bg-[#00a697] rounded-md px-3 py-2 transition-colors duration-200"
+                  >
+                    {item.label}
+                  </a>
                 ))}
+              </div>
+            ))}
+
+            <div className="pt-2 border-t border-[#66fdee]/20">
+              {username ? (
+                <>
+                  <div className="px-3 py-2 text-white/80">Signed in as {username}</div>
+                  <button
+                    onClick={logout}
+                    className="w-full text-left text-white/80 hover:bg-[#00a697] rounded-md px-3 py-2 transition-colors duration-200"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="block text-white/80 hover:bg-[#00a697] rounded-md px-3 py-2 transition-colors duration-200"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="block text-white/80 hover:bg-[#00a697] rounded-md px-3 py-2 transition-colors duration-200"
+                  >
+                    Register
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
