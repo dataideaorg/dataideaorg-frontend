@@ -10,7 +10,6 @@ import {
   FaGlobe,
   FaExternalLinkAlt,
   FaTwitter,
-  FaFacebook,
   FaLinkedin,
   FaYoutube,
 } from "react-icons/fa";
