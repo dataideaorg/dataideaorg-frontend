@@ -39,7 +39,7 @@ const Home: React.FC = () => {
                 and organizations
               </p>
               <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
-                <a href="#courses" className="px-8 py-3 bg-white text-[#008374] rounded-md font-semibold hover:bg-cyan-50 transition-all duration-300 shadow-lg hover:shadow-xl">
+                <a href="https://science.dataidea.org" className="px-8 py-3 bg-white text-[#008374] rounded-md font-semibold hover:bg-cyan-50 transition-all duration-300 shadow-lg hover:shadow-xl">
                   Get Started
                 </a>
                 <a href="#blog" className="px-8 py-3 border-2 border-white text-white rounded-md font-semibold hover:bg-white/10 transition-all duration-300">
