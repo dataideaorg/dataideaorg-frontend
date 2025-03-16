@@ -16,6 +16,81 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import ChallengeIntro from "./pages/100DaysOfCodeHome";
 import NotFound from "./pages/404";
 import MainLayout from "./layouts/MainLayout";
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+
+// Create a custom theme
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#008374',
+      light: '#00a697',
+      dark: '#006d61',
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      main: '#333333',
+      light: '#555555',
+      dark: '#000000',
+      contrastText: '#ffffff',
+    },
+  },
+  typography: {
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    h1: {
+      fontWeight: 700,
+    },
+    h2: {
+      fontWeight: 700,
+    },
+    h3: {
+      fontWeight: 600,
+    },
+    h4: {
+      fontWeight: 600,
+    },
+    h5: {
+      fontWeight: 500,
+    },
+    h6: {
+      fontWeight: 500,
+    },
+    button: {
+      textTransform: 'none',
+    },
+  },
+  shape: {
+    borderRadius: 8,
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: 8,
+          textTransform: 'none',
+          boxShadow: 'none',
+          '&:hover': {
+            boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+          },
+        },
+      },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: 12,
+          boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+        },
+      },
+    },
+  },
+});
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,7 +108,12 @@ const router = createBrowserRouter(
 );
 
 const App: React.FC = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 };
 
 export default App;
